@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import type { ProductCardProps } from "./Catalog";
+import { Link } from "react-router";
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
@@ -30,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </CardContent>
       <CardActions sx={{ justifyContent: "space-between" }}>
         <Button size="small">Add to Cart</Button>
-        <Button size="small">View</Button>
+        <Button size="small" component={Link} to={`/catalog/${product.id}`}>View</Button>
       </CardActions>
     </Card>
   );
