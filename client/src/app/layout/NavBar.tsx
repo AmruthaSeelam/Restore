@@ -11,9 +11,10 @@ import {
   Typography,
 } from "@mui/material";
 import { DarkMode, LightMode, ShoppingCart } from "@mui/icons-material";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { setDarkMode } from "../../store/uiSlice";
+import { useFetchBasketQuery } from "../../store/basketApi";
 
 export default function NavBar() {
   const centerItems = [
@@ -53,6 +54,8 @@ export default function NavBar() {
   };
   const { isLoading, darkMode } = useAppSelector(state => state.ui)
   const dispatch=useAppDispatch()
+  const {data:basket}=useFetchBasketQuery();
+  const basketCount=basket?.items?.reduce((sum,item)=>sum+=item.quantity,0);
   return (
     <AppBar position="fixed">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -79,8 +82,8 @@ export default function NavBar() {
           })}
         </List>
         <Box display="flex" alignItems="center">
-          <IconButton size="large" color="inherit">
-            <Badge badgeContent="4" color="secondary">
+          <IconButton size="large" color="inherit" component={Link} to="/basket">
+            <Badge badgeContent={basketCount} color="secondary">
               <ShoppingCart />
             </Badge>
           </IconButton>
