@@ -1,4 +1,5 @@
 using API.Data;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,13 +12,17 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 });
 
 builder.Services.AddCors();
+builder.Services.AddTransient<ExceptionMiddleware>(); // exception middleware service
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>(); // added middleware
 
 app.UseCors(opt =>
 {
     opt.AllowAnyHeader()
        .AllowAnyMethod()
+       .AllowCredentials()
        .WithOrigins("https://localhost:3000");
 });
 

@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "C#: API Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/API/API.csproj"
+        },
+        {
+            "name": "C#: API",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\API\\API.csproj",
+            "launchConfigurationId": "TargetFramework=;https"
+        }
+    ]
+}

@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 
 </Project>

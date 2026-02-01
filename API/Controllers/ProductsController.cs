@@ -1,16 +1,14 @@
 using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")] // https://localhost:5001/api/products
-    [ApiController]
+  
 
     //dependency injection => replaced traditional constructor approach to latest one as below line
-    public class ProductsController(StoreContext context) : ControllerBase 
+    public class ProductsController(StoreContext context) : BaseApiController 
     {
 
         // curd methods here
